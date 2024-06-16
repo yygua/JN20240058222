@@ -1,0 +1,42 @@
+function placeholder(){
+	$('input[title]').each(function(i, item){
+		var $input = $(item);
+		$input.attr('placeholder', $input.attr('title'));
+	});
+}
+
+function loader(){
+	$.layer({
+ 		type: 3,
+ 		border: [10, 0.3, '#fff'],
+ 		shade: [0.6, '#fff'],
+ 	});
+}
+
+function unloader(){
+	layer.closeAll();
+}
+
+function confirmation(body, yes){
+	$.layer({
+		type: 0,
+		title: '警告',
+		border: [3, 1, '#eee'],
+		shade: [0.6, '#fff'],
+		move: false,
+		dialog: {
+			btns: 2,
+		    type: -1,
+		    msg: body || '',
+			yes: yes || function(index){layer.close(index);},
+		}
+	});
+}
+
+function changePage(url){
+	window.parent.changePage(url);
+}
+
+$(function(){
+	placeholder();
+});
